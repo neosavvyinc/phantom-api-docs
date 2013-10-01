@@ -18,12 +18,11 @@ module.exports = function(config) {
         'src/main/resources/lib/momentjs/moment.js',
         'src/main/resources/lib/neosavvy-javascript-core/neosavvy-javascript-core.js',
         'src/main/resources/lib/q/q.js',
-        'src/main/resources/lib/zepto/zepto.js',
+        'src/main/resources/lib/jquery/jquery.js',
         'src/main/resources/lib/angular/angular.js',
         'src/main/resources/lib/angular-*/*.js',
         'src/main/resources/lib/neosavvy-javascript-angular-core/neosavvy-javascript-angular-core.js',
         'src/main/resources/application/application.js',
-        'src/main/resources/core/**/*.js',
         'src/main/resources/application/**/*.js',
         'src/test/**/*-spec.js'
     ],

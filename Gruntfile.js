@@ -62,9 +62,31 @@ module.exports = function (grunt) {
                     "echo 'Built from branch: ' `git rev-parse --abbrev-ref HEAD` >> src/main/resources/buildinfo.txt",
                     "cat src/main/resources/buildinfo.txt"
                 ].join("&&")
+            },
+            renameCoverage: {
+                options: {
+                    callback: function( err, stdout, stderr, cb) {
+                        console.log("Renaming Coverage Reports...");
+                        cb();
+                    }
+                },
+                command: [
+                    "cd target/coverage",
+                    "ls | sed -n 's/^Chrome.*/mv \"&\" Chrome/gp'  | sh"
+                ].join("&&")
+
             }
         },
-
+        karma:{
+            unit:{
+                configFile:'karma.conf.js'
+            },
+            build:{
+                configFile:'karma.conf.js',
+                singleRun:true,
+                browsers:['Chrome']
+            }
+        },
         banner:'/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -190,6 +212,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-karma');
 
 
 
@@ -217,7 +240,7 @@ module.exports = function (grunt) {
     /**
      * Phase 4 is to run tests against the pre-copied source and post-copied source
      */
-    grunt.registerTask('runTests', []);
+    grunt.registerTask('runTests', ['karma:build', 'shell:renameCoverage']);
 
     /**
      * Phase 5 is to deploy and start the application

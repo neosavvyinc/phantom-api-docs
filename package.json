@@ -40,7 +40,8 @@
         "karma-chrome-launcher": "*",
         "karma-firefox-launcher": "*",
         "karma-phantomjs-launcher": "*",
-        "karma-script-launcher": "*"
+        "karma-script-launcher": "*",
+        "karma-coverage": "~0.1.0"
     },
     "paths": {
         "libraries": "src/main/resources/lib",
