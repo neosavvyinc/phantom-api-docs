@@ -105,7 +105,8 @@ module.exports = function (grunt) {
                         expand:true,
                         cwd:'<%= pkg.paths.sourceDirectory %>',
                         src:[
-                            '**/*'
+                            '**/*',
+                            '!assets/scss/**/*.scss'
                         ],
                         dest: '<%= pkg.paths.buildOutputDirectory %>/browser/en'
                     }
@@ -185,6 +186,18 @@ module.exports = function (grunt) {
                 },
                 tasks: ['nodemon', 'open']
             }
+        },
+        sass: {
+            dist: {
+                banner: '<%= banner %>'
+            },
+            files: {
+                'src/main/resources/assets/css/app.css': 'src/main/resources/assets/scss/app.scss'
+            }
+        },
+        watch: {
+            files: ['src/main/resources/assets/scss/**/*.scss'],
+            tasks: 'sass'
         }
     });
 
@@ -213,6 +226,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib.sass');
 
 
 
@@ -248,7 +262,7 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', ['concurrent']);
 
     // Default task.
-    grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
+    grunt.registerTask('default', ['verify', 'clean', 'resolve', 'sass', 'copyResources', 'runTests', 'deploy']);
 
 };
 

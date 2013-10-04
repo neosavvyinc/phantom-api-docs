@@ -2,7 +2,9 @@ bower_components
 node_modules
 src/main/resources/lib
 
+.tern-port
 .idea/*
+*.swp
 
 src/main/resources/buildinfo.txt
 
