@@ -3,6 +3,8 @@ node_modules
 src/main/resources/lib
 
 .idea/*
+*.swp
+*.log
 
 src/main/resources/buildinfo.txt
 
