@@ -1,0 +1,56 @@
+<style>
+  .resource p {
+    padding-top: 20px;
+    font-size: 1.2em;
+  }
+
+  .resource .fail {
+    color: red;
+  }
+
+  .resource .ok {
+    color: green;
+  }
+
+  .json {
+    background-color: black;
+    color: white;
+    padding: 20px;
+  }
+
+</style>
+
+<div class="resource">
+  <div class="row">
+    <p class="large-4 columns">Endpoint: {{endpoint}}</p>
+    <p class="large-4 columns">Method: {{method}}</p>
+    <p class="large-4 columns">Status: <span class="status">{{status.toUpperCase()}}</span></p>
+  </div>
+
+  <!--
+  <div class="row">
+    <p>Params: {{params}}</p>
+  </div>
+  -->
+
+  <div class="row">
+    <div class="large-12 columns">
+      <p>Payload:</p>
+      <pre class="json">{{payload}}</pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <p class="response large-12 columns">Response:</p>
+  </div>
+  <div class="row">
+    <div class="json large-6 columns">
+      <p>Diff:</p>
+      <pre class="actual"></pre>
+    </div>
+    <div class="json large-6 columns">
+      <p>Expected:</p>
+      <pre>{{expectedResponse}}</pre>
+    </div>
+  </div>
+</div>
