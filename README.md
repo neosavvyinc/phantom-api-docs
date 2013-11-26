@@ -1,7 +1,5 @@
-angular-seedling
+ns-api-doc POC
 ================
-
-Base app for Neosavvy Angular JS projects. 
 
 To use this seedling project and see it work just execute the following two commands
 on any MacOS system.
@@ -9,6 +7,9 @@ on any MacOS system.
 
     # npm install
     # grunt
+    # node simple-api.js
+
+    then hit localhost:3000/#/docs
 
 Expectations are that you have SASS and Ruby installed. The build will fail if you don't.
 
