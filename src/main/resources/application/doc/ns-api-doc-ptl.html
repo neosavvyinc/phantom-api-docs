@@ -1,4 +1,16 @@
 <style>
+  del, ins {
+    text-decoration: none
+  } 
+
+  del {
+    background-color: red;
+  }
+
+  ins {
+    background-color: green;
+  }
+
   .resource p {
     padding-top: 20px;
     font-size: 1.2em;
@@ -13,16 +25,17 @@
   }
 
   .json {
-    background-color: black;
+    padding:10px;
+    border-radius: 10px;
+    background-color: #007ba1;
     color: white;
-    padding: 20px;
   }
 
 </style>
 
 <div class="resource">
   <div class="row">
-    <p class="large-4 columns">Endpoint: {{endpoint}}</p>
+    <p class="large-4 columns">Endpoint: {{path}}</p>
     <p class="large-4 columns">Method: {{method}}</p>
     <p class="large-4 columns">Status: <span class="status">{{status.toUpperCase()}}</span></p>
   </div>
@@ -45,12 +58,10 @@
   </div>
   <div class="row">
     <div class="json large-6 columns">
-      <p>Diff:</p>
-      <pre class="actual"></pre>
+      <pre>{{response}}</pre>
     </div>
-    <div class="json large-6 columns">
-      <p>Expected:</p>
-      <pre>{{expectedResponse}}</pre>
+    <div class="json large-6 columns" ng-show="errors">
+      <li ng-repeat="error in errors">{{error.property}} ({{error.instance}}) {{error.message}}</li>
     </div>
   </div>
 </div>

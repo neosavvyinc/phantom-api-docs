@@ -17,7 +17,7 @@ Neosavvy.Dependencies = [
 console.log(Neosavvy.ApiDoc);
 angular.module(
     'application',
-    Neosavvy.Dependencies.concat('neosavvy.apidoc.directives')
+    Neosavvy.Dependencies.concat('neosavvy.apidoc.directives', 'neosavvy.apidoc.controllers')
 ).
   config(
     [
@@ -41,8 +41,13 @@ angular.module(
     //            controllerAs: 'chapter'
             });
             $routeProvider.when('/docs', {
-                templateUrl: '/application/doc/index.html'
-            })
+                templateUrl: '/application/doc/index.html',
+                controller: 'DocCtrl'
+            });
+            $routeProvider.when('/docs/:resource', {
+                templateUrl: '/application/doc/detail.html',
+                controller: 'DocCtrl'
+            });
 
             $routeProvider.otherwise({templateUrl: '/application/view/content/home-ptl.html'});
 

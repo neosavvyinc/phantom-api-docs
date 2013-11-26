@@ -41,7 +41,10 @@
     "karma-firefox-launcher": "*",
     "karma-phantomjs-launcher": "*",
     "karma-script-launcher": "*",
-    "karma-coverage": "~0.1.0"
+    "karma-coverage": "~0.1.0",
+    "chai": "~1.8.1",
+    "chai-json-schema": "~1.0.7",
+    "jsonschema": "~0.4.0"
   },
   "paths": {
     "libraries": "src/main/resources/lib",

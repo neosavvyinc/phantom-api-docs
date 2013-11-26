@@ -1,0 +1,63 @@
+[
+    {
+        "name": "dudes",
+        "endpoints": [
+            {
+                "path": "/api/dudes",
+                "method": "GET",
+                "params": null,
+                "payload": null,
+                "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": { "type": "number"},
+                                "name": { "type": "string"},
+                                "home": { "type": "string"}
+                            }
+                        }
+                }
+            },
+            {
+                "path": "/api/dudes/1",
+                "method": "GET",
+                "params": null,
+                "payload": null,
+                "schema": {
+                        "type": "object",
+                        "properties": {
+                            "id": { "type": "number"},
+                            "name": { "type": "string"},
+                            "home": { "type": "string"}
+                        }
+                }
+            },
+            {
+                "path": "/api/dudes",
+                "method": "POST",
+                "params": null,
+                "payload": {
+                    "name": "Miley Cyrus",
+                    "home": "Hell"
+                },
+                "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": { "type": "number"},
+                                "name": { "type": "string"},
+                                "home": { "type": "string"}
+                            }
+                        }
+                }
+            }
+        ]
+    },
+    {
+        "name": "bros",
+        "endpoints": []
+    }
+
+]
