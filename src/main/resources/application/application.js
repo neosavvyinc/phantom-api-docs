@@ -17,29 +17,16 @@ Neosavvy.Dependencies = [
 console.log(Neosavvy.ApiDoc);
 angular.module(
     'application',
-    Neosavvy.Dependencies.concat('neosavvy.apidoc.directives', 'neosavvy.apidoc.controllers')
+    Neosavvy.Dependencies.concat(
+        'neosavvy.apidoc.directives',
+        'neosavvy.apidoc.controllers'
+    )
 ).
   config(
     [
         '$routeProvider',
         function($routeProvider) {
 
-
-            $routeProvider.when('/index', {
-                templateUrl: '/application/view/content/home-ptl.html'
-    //            controller: HomeController,
-    //            controllerAs: 'book'
-            });
-            $routeProvider.when('/grid', {
-                templateUrl: '/application/view/content/grid-ptl.html'
-    //            controller: ChapterCntl,
-    //            controllerAs: 'chapter'
-            });
-            $routeProvider.when('/list', {
-                templateUrl: '/application/view/content/list-ptl.html'
-    //            controller: ChapterCntl,
-    //            controllerAs: 'chapter'
-            });
             $routeProvider.when('/docs', {
                 templateUrl: '/application/doc/index.html',
                 controller: 'DocCtrl'
@@ -49,7 +36,11 @@ angular.module(
                 controller: 'DocCtrl'
             });
 
-            $routeProvider.otherwise({templateUrl: '/application/view/content/home-ptl.html'});
+            $routeProvider.otherwise(
+                {
+                    templateUrl: '/application/doc/index.html',
+                    controller: 'DocCtrl'
+                });
 
             console.log("Starting this mofo");
 
