@@ -24,20 +24,34 @@
     color: green;
   }
 
+  .resourceItem {
+      list-style: none;
+  }
+
   .json {
     padding:10px;
     border-radius: 10px;
-    background-color: #007ba1;
-    color: white;
+    background-color: #f5f5f5;
+    border: 1px solid rgba(0,0,0,0.15)
+  }
+
+  .summary {
+      padding:10px;
+      border-radius: 10px;
+      background-color: #f5f5f5;
+      border: 1px solid rgba(0,0,0,0.15)
   }
 
 </style>
 
 <div class="resource">
   <div class="row">
-    <p class="large-4 columns">Endpoint: {{path}}</p>
-    <p class="large-4 columns">Method: {{method}}</p>
-    <p class="large-4 columns">Status: <span class="status">{{status.toUpperCase()}}</span></p>
+      <ul>
+        <li class="resourceItem large-12 columns"><p>Summary: {{summaryText}}</p></li>
+        <li class="resourceItem large-12 columns">Endpoint: {{path}}</li>
+        <li class="resourceItem large-12 columns">Method: {{method}}</li>
+        <li class="resourceItem large-12 columns">Status: <span class="status">{{status.toUpperCase()}}</span></li>
+      </ul>
   </div>
 
   <!--
@@ -47,21 +61,25 @@
   -->
 
   <div class="row">
-    <div class="large-12 columns">
-      <p>Payload:</p>
-      <pre class="json">{{payload}}</pre>
+      <div class="large-12 columns">
+          <hr>
+          <p>Payload:</p>
+          <pre class="json">{{payload}}</pre>
     </div>
   </div>
 
   <div class="row">
-    <p class="response large-12 columns">Response:</p>
+      <div class="large-12 columns">
+        <p>Response:</p>
+        <pre class="json">{{response}}</pre>
+      </div>
   </div>
   <div class="row">
-    <div class="json large-6 columns">
-      <pre>{{response}}</pre>
-    </div>
     <div class="json large-6 columns" ng-show="errors">
       <li ng-repeat="error in errors">{{error.property}} ({{error.instance}}) {{error.message}}</li>
     </div>
+    <hr/>
   </div>
+
+
 </div>

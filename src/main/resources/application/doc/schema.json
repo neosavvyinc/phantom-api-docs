@@ -1,45 +1,38 @@
 [
     {
-        "name": "dudes",
+        "name": "sports",
         "endpoints": [
             {
-                "path": "/api/dudes",
+                "summaryText": "This API call can be used to retrieve a list of sports",
+                "path": "/sports",
                 "method": "GET",
                 "params": null,
                 "payload": null,
                 "schema": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "id": { "type": "number"},
-                                "name": { "type": "string"},
-                                "home": { "type": "string"}
-                            }
-                        }
-                }
-            },
-            {
-                "path": "/api/dudes/1",
-                "method": "GET",
-                "params": null,
-                "payload": null,
-                "schema": {
+                    "type": "array",
+                    "items": {
                         "type": "object",
                         "properties": {
                             "id": { "type": "number"},
                             "name": { "type": "string"},
-                            "home": { "type": "string"}
+                            "description": { "type": "string"},
+                            "active": { "type": "boolean"}
                         }
+                    }
                 }
             },
+
+
             {
-                "path": "/api/dudes",
-                "method": "POST",
+                "summaryText": "This API call is used to save a new sport",
+                "path": "/sports",
+                "method": "PUT",
                 "params": null,
                 "payload": {
-                    "name": "Miley Cyrus",
-                    "home": "Hell"
+                    "id": 4,
+                    "name": "Soccer 2",
+                    "description": "With a darn ball",
+                    "active": true
                 },
                 "schema": {
                         "type": "array",
@@ -48,11 +41,60 @@
                             "properties": {
                                 "id": { "type": "number"},
                                 "name": { "type": "string"},
-                                "home": { "type": "string"}
+                                "description": { "type": "string"},
+                                "active": { "type": "boolean"}
                             }
                         }
                 }
+            },
+
+            {
+                "summaryText": "This API call is used to save a new sport",
+                "path": "/sports",
+                "method": "DELETE",
+                "params": null,
+                "payload": 4,
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": { "type": "number"},
+                            "name": { "type": "string"},
+                            "description": { "type": "string"},
+                            "active": { "type": "boolean"}
+                        }
+                    }
+                }
+            },
+
+            {
+                "summaryText": "This API Call Posts New Data",
+                "path": "/sports",
+                "method": "POST",
+                "params": null,
+                "payload": {
+                    "id": 9,
+                    "name": "Soccer 3",
+                    "description": "With a darn ball Part 2",
+                    "active": true
+                },
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": { "type": "number"},
+                            "name": { "type": "string"},
+                            "description": { "type": "string"},
+                            "active": { "type": "boolean"}
+                        }
+                    }
+                }
             }
+
+
+
         ]
     },
     {

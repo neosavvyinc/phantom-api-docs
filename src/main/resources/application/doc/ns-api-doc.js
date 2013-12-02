@@ -15,6 +15,7 @@ Neosavvy.ApiDoc.Directives.directive('nsApiDoc', function ($http) {
         },
         link: function (scope, elem, attrs) {
 
+            scope.summaryText = scope.endpoint.summaryText;
             scope.path = scope.endpoint.path;
             scope.method = scope.endpoint.method;
             scope.params = scope.endpoint.params;

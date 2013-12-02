@@ -1,9 +1,3 @@
-var Neosavvy = Neosavvy || {};
-
-Neosavvy.ApiDoc = Neosavvy.ApiDoc || {};
-Neosavvy.ApiDoc.Directives = angular.module('neosavvy.apidoc.directives', []);
-Neosavvy.ApiDoc.Controllers = angular.module('neosavvy.apidoc.controllers', []);
-
 Neosavvy.ApiDoc.Controllers.controller('DocCtrl', function ($scope, $route, $http) {
     $scope.resources = undefined;
     $scope.endpoints = undefined;

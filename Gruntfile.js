@@ -6,6 +6,20 @@ module.exports = function (grunt) {
         pkg:grunt.file.readJSON('package.json'),
 
         shell: {
+            startNginx: {
+                command: "sudo nginx -c `pwd`/nginx.conf"
+            },
+            stopNginx: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        console.log("Stopping Nginx as sudo - enter your user's password");
+                        console.log(stdout);
+                        console.log(stderr);
+                        cb();
+                    }
+                },
+                command: "sudo pkill nginx"
+            },
             testRuby: {
                 options: {
                     callback: function( err, stdout, stderr, cb ) {
@@ -249,6 +263,11 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
+
+    grunt.registerTask('stop', ['shell:stopNginx']);
+    grunt.registerTask('start', ['shell:startNginx']);
+
+    grunt._tasks["nameYouWant"]
 
 };
 
