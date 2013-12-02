@@ -1,9 +1,5 @@
-describe("view.content.GridController", function () {
-    var $rootScope, $scope, controller;
+describe("SampleSpec", function () {
 
-    beforeEach(function () {
-        module.apply(module, Neosavvy.Dependencies);
-    });
 
     describe("ACTION HANDLERS", function () {
         describe("Empty test", function () {
