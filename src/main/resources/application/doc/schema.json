@@ -98,8 +98,42 @@
         ]
     },
     {
-        "name": "bros",
-        "endpoints": []
+        "name": "registration",
+        "endpoints": [
+            {
+                "summaryText": "This is a sample of a Currant User Account (No Facebook ID)",
+                "path": "/registration",
+                "method": "POST",
+                "params": null,
+                "payload": {
+                    "firstName" : "Dave",
+                    "lastName"  : "Alson",
+                    "password"  : "password",
+                    "email"     :  "dave.alson@gmail.com",
+                    "favoriteTimeToPlay" : "now",
+                    "favoriteSports" : []
+                },
+                "schema": {}
+            },
+
+            {
+                "summaryText": "This is a sample of a Facebook based User Account (Facebook ID)",
+                "path": "/registration",
+                "method": "POST",
+                "params": null,
+                "payload": {
+                    "firstName" : "Adam",
+                    "lastName"  : "Parrish",
+                    "password"  : "password",
+                    "email"     :  "waparrish@gmail.com",
+                    "favoriteTimeToPlay" : "now",
+                    "favoriteSports" : [],
+                    "facebookId": "waparrish@gmail.com"
+                },
+                "schema": {}
+            }
+
+        ]
     }
 
 ]
