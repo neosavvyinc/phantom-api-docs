@@ -2,31 +2,11 @@
     {
         "name": "sports",
         "endpoints": [
-            {
-                "summaryText": "This API call can be used to retrieve a list of sports",
-                "path": "/sports",
-                "method": "GET",
-                "params": null,
-                "payload": null,
-                "schema": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "id": { "type": "number"},
-                            "name": { "type": "string"},
-                            "description": { "type": "string"},
-                            "active": { "type": "boolean"}
-                        }
-                    }
-                }
-            },
-
 
             {
                 "summaryText": "This API call is used to save a new sport",
                 "path": "/sports",
-                "method": "PUT",
+                "method": "POST",
                 "params": null,
                 "payload": {
                     "id": 4,
@@ -35,26 +15,6 @@
                     "active": true
                 },
                 "schema": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "id": { "type": "number"},
-                                "name": { "type": "string"},
-                                "description": { "type": "string"},
-                                "active": { "type": "boolean"}
-                            }
-                        }
-                }
-            },
-
-            {
-                "summaryText": "This API call is used to save a new sport",
-                "path": "/sports",
-                "method": "DELETE",
-                "params": null,
-                "payload": 4,
-                "schema": {
                     "type": "array",
                     "items": {
                         "type": "object",
@@ -69,7 +29,7 @@
             },
 
             {
-                "summaryText": "This API Call Posts New Data",
+                "summaryText": "This API call is used to update an existing sport",
                 "path": "/sports",
                 "method": "POST",
                 "params": null,
@@ -91,10 +51,27 @@
                         }
                     }
                 }
+            },
+
+            {
+                "summaryText": "This API call can be used to retrieve a list of sports",
+                "path": "/sports",
+                "method": "GET",
+                "params": null,
+                "payload": null,
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": { "type": "number"},
+                            "name": { "type": "string"},
+                            "description": { "type": "string"},
+                            "active": { "type": "boolean"}
+                        }
+                    }
+                }
             }
-
-
-
         ]
     },
     {
