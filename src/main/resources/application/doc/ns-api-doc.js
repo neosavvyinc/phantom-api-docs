@@ -6,6 +6,17 @@ Neosavvy.ApiDoc.Controllers = angular.module('neosavvy.apidoc.controllers', []);
 
 var result = document.createElement('div');
 Neosavvy.ApiDoc.Directives.directive('nsApiDoc', function ($http) {
+
+    function getParameterizedRoute (path, params) {
+        var param;
+
+        for (param in params) {
+            path = path.replace(':'.concat(param), params[param]);
+        }
+
+        return path;
+    };
+
     return {
         restrict: 'E',
         templateUrl: 'application/doc/ns-api-doc-ptl.html',
@@ -27,9 +38,9 @@ Neosavvy.ApiDoc.Directives.directive('nsApiDoc', function ($http) {
 
             scope.status = 'ok';
 
-            $http({method: scope.method, url: scope.path, data: scope.payload}).then(function (resp) {
+            $http({method: scope.method, url: getParameterizedRoute(scope.path, scope.params), data: scope.payload}).then(function (resp) {
                 scope.response = JSON.stringify(resp.data, undefined, 4);
-                
+
                 return resp.data;
             }).then(function (resp) {
                 return $http.post('/api/validate', {
@@ -37,14 +48,12 @@ Neosavvy.ApiDoc.Directives.directive('nsApiDoc', function ($http) {
                     schema: scope.endpoint.schema
                 });
             }).then(function (resp) {
-                console.log(resp);
                 if (resp.data.errors.length > 0) {
                     scope.errors = resp.data.errors;
                     scope.status = 'fail';
                 }
                 elem.find('.status').addClass(scope.status);
             });
-            
         }
     }
 });

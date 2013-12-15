@@ -75,41 +75,124 @@
         ]
     },
     {
-        "name": "registration",
+        "name": "users",
         "endpoints": [
             {
-                "summaryText": "This is a sample of a Currant User Account (No Facebook ID)",
-                "path": "/registration",
+                "summaryText": "Register a user",
+                "path": "/users/register",
                 "method": "POST",
                 "params": null,
                 "payload": {
-                    "firstName" : "Dave",
-                    "lastName"  : "Alson",
-                    "password"  : "password",
-                    "email"     :  "dave.alson@gmail.com",
-                    "favoriteTimeToPlay" : "now",
-                    "favoriteSports" : []
+                    "email" : "ccaplinger@neosavvy.com",
+                    "password" : "P@ssword1",
+                    "birthday" :  "10/12/86"
                 },
-                "schema": {}
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
             },
 
             {
-                "summaryText": "This is a sample of a Facebook based User Account (Facebook ID)",
-                "path": "/registration",
+                "summaryText": "Log in a registered user",
+                "path": "/users/login",
                 "method": "POST",
                 "params": null,
                 "payload": {
-                    "firstName" : "Adam",
-                    "lastName"  : "Parrish",
-                    "password"  : "password",
-                    "email"     :  "waparrish@gmail.com",
-                    "favoriteTimeToPlay" : "now",
-                    "favoriteSports" : [],
-                    "facebookId": "waparrish@gmail.com"
+                    "email" : "ccaplinger@neosavvy.com",
+                    "password" : "P@ssword1"
                 },
-                "schema": {}
-            }
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
+            },
 
+            {
+                "summaryText": "Get a user by :id",
+                "path": "/users/:id",
+                "method": "GET",
+                "params": { "id": 1 },
+                "payload": { },
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
+
+            },
+
+            {
+                "summaryText": "Get a user's contacts",
+                "path": "/users/:id/contacts",
+                "method": "GET",
+                "params": { "id": 1 },
+                "payload": { },
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
+
+            },
+
+            {
+                "summaryText": "Update a user's contacts",
+                "path": "/users/:id/contacts",
+                "method": "POST",
+                "params": { "id": 1 },
+                "payload": ["614-499-3676", "614-519-2050"],
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
+
+            },
+
+            {
+                "summaryText": "Get a user's blocked contacts",
+                "path": "/users/:id/blockedusers",
+                "method": "GET",
+                "params": { "id": 1 },
+                "payload": { },
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
+
+            },
+
+            {
+                "summaryText": "Update a user's blocked contacts",
+                "path": "/users/:id/blockedusers",
+                "method": "POST",
+                "params": { "id": 1 },
+                "payload": [129487497, 439574398],
+                "schema": {
+                    "type": "object" ,
+                    "properties": {
+                        "code": { "type": "number" },
+                        "message": { "type": "string" }
+                    }
+                }
+
+            }
         ]
     }
 
