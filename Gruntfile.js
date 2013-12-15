@@ -6,7 +6,40 @@ module.exports = function (grunt) {
         pkg:grunt.file.readJSON('package.json'),
 
         shell: {
+            symLink: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        console.log("Adding a symlink to /tmp for the seedling nginx host");
+                        console.log(stdout);
+                        console.log(stderr);
+                        cb();
+                    }
+                },
+                command: "if [ ! -L /tmp/phantom-api-doc ]; then ln -s `pwd`/src/main/resources /tmp/phantom-api-doc; fi"
+            },
+            rmSymLink: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        console.log("Removing the symlink from /tmp for the seedling nginx host");
+                        console.log(stdout);
+                        console.log(stderr);
+                        cb();
+                    }
+                },
+                command: "if [ ! -L /tmp/phantom-api-doc ]; then rm /tmp/phantom-api-doc; fi"
+            },
+
+
+
             startNginx: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        console.log("Starting Nginx as sudo - enter your user's password");
+                        console.log(stdout);
+                        console.log(stderr);
+                        cb();
+                    }
+                },
                 command: "sudo nginx -c `pwd`/nginx.conf"
             },
             stopNginx: {
@@ -19,6 +52,40 @@ module.exports = function (grunt) {
                     }
                 },
                 command: "sudo pkill nginx"
+            },
+            testNginx: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        var output = stdout.split("\n");
+                        if( output[0] === undefined || output[0] === "" ) {
+                            console.log("You need to install nginx");
+                            console.log("Run command: 'brew install nginx'")
+                            return false;
+                        } else {
+                            console.log("You have nginx installed here: [" + output[0] + "]");
+                        }
+                        cb();
+
+                    }
+                },
+                command: "which nginx"
+            },
+            testPkill: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        var output = stdout.split("\n");
+                        if( output[0] === undefined || output[0] === "" ) {
+                            console.log("You need to install pkill");
+                            console.log("Run command: 'brew install proctools'")
+                            return false;
+                        } else {
+                            console.log("You have pkill installed here: [" + output[0] + "]");
+                        }
+                        cb();
+
+                    }
+                },
+                command: "which pkill"
             },
             testRuby: {
                 options: {
@@ -254,7 +321,7 @@ module.exports = function (grunt) {
     /**
      * Phase 4 is to run tests against the pre-copied source and post-copied source
      */
-    grunt.registerTask('runTests', ['karma:build', 'shell:renameCoverage']);
+    grunt.registerTask('runTests', []);
 
     /**
      * Phase 5 is to deploy and start the application
@@ -264,10 +331,23 @@ module.exports = function (grunt) {
     // Default task.
     grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
 
-    grunt.registerTask('stop', ['shell:stopNginx']);
-    grunt.registerTask('start', ['shell:startNginx']);
-
-    grunt._tasks["nameYouWant"]
+    /**
+     * NGINX Hooks
+     */
+    grunt.registerTask('start', [
+        'shell:testNginx',
+        'shell:symLink',
+        'shell:startNginx'
+    ]);
+    grunt.registerTask('stop', [
+        'shell:testPkill',
+        'shell:rmSymLink',
+        'shell:stopNginx'
+    ]);
+    grunt.registerTask('restart', [
+        'stop',
+        'start'
+    ]);
 
 };
 
