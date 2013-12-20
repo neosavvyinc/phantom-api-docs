@@ -32,7 +32,7 @@
                 "payload": {
                     "email" : "ccaplinger@neosavvy.com",
                     "password" : "P@ssword1",
-                    "birthday" :  "10/12/86"
+                    "birthday" :  "1986-10-12"
                 },
                 "schema": {
                     "type": "object" ,
