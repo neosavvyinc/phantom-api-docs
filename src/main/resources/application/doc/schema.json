@@ -126,11 +126,11 @@
             },
 
             {
-                "summaryText": "Update a user's blocked contacts",
-                "path": "/users/:id/blockedusers",
+                "summaryText": "Clear a block list for a user",
+                "path": "/users/:id/clearblocklist",
                 "method": "POST",
                 "params": { "id": 1 },
-                "payload": [129487497, 439574398],
+                "payload": { },
                 "schema": {
                     "type": "object" ,
                     "properties": {
