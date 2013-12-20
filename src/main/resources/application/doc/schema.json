@@ -4,70 +4,17 @@
         "endpoints": [
 
             {
-                "summaryText": "This API call is used to save a new sport",
-                "path": "/sports",
+                "summaryText": "This API Call is used to block someone you are having a conversation with",
+                "path": "/conversation/block/:id",
                 "method": "POST",
-                "params": null,
-                "payload": {
-                    "id": 4,
-                    "name": "Soccer 2",
-                    "description": "With a darn ball",
-                    "active": true
-                },
+                "params": {"id": 1},
+                "payload": {},
                 "schema": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "properties": {
-                            "id": { "type": "number"},
-                            "name": { "type": "string"},
-                            "description": { "type": "string"},
-                            "active": { "type": "boolean"}
-                        }
-                    }
-                }
-            },
-
-            {
-                "summaryText": "This API call is used to update an existing sport",
-                "path": "/sports",
-                "method": "POST",
-                "params": null,
-                "payload": {
-                    "id": 9,
-                    "name": "Soccer 3",
-                    "description": "With a darn ball Part 2",
-                    "active": true
-                },
-                "schema": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "id": { "type": "number"},
-                            "name": { "type": "string"},
-                            "description": { "type": "string"},
-                            "active": { "type": "boolean"}
-                        }
-                    }
-                }
-            },
-
-            {
-                "summaryText": "This API call can be used to retrieve a list of sports",
-                "path": "/sports",
-                "method": "GET",
-                "params": null,
-                "payload": null,
-                "schema": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "id": { "type": "number"},
-                            "name": { "type": "string"},
-                            "description": { "type": "string"},
-                            "active": { "type": "boolean"}
+                            "id": { "type": "number"}
                         }
                     }
                 }

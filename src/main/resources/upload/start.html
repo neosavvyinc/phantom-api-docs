@@ -25,10 +25,10 @@
 
     <div ng-controller="mainCtrl">
         <h1>File upload</h1>
-        Post a file to <code>/conversation/startOrUpdate</code> and display the server response
+        Post a file to <code>/conversation/start</code> and display the server response
         <br/>
 
-        <form action="/api/conversation/startOrUpdate" method="post" enctype="multipart/form-data" ng-upload>
+        <form action="/conversation/start" method="post" enctype="multipart/form-data" ng-upload>
             <p>
                 <label for="image">Your picture:</label>
             </p>
@@ -39,16 +39,10 @@
                 <input type="text" name="imageText" value="This is some text"/>
             </p>
             <p>
-                <input type="text" name="userList[0]" value="Adam">
+                <input type="text" name="toUsers" value="Adam,Chris,Trevor,Nick">
             </p>
             <p>
-                <input type="text" name="userList[1]" value="Chris"/>
-            </p>
-            <p>
-                <input type="text" name="userList[2]" value="Nick"/>
-            </p>
-            <p>
-                <input type="text" name="userId" value="1"/>
+                <input type="text" name="userid" value="1"/>
             </p>
 
             <p>

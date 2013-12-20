@@ -1,9 +1,20 @@
 <div>
-  <div class="row" ng-repeat="resource in resources">
-    <li class="large-12 columns"><a ng-href="#/docs/{{resource.name}}">/{{resource.name}}</a></li>
+
+  <div class="row">
+      <p>Use the following API information to create Phantom Messages and Update Conversations</p>
+      <ul>
+          <li class="large-12 columns"><a href="upload/start.html">Start a New Conversation</a></li>
+          <li class="large-12 columns"><a href="upload/respond.html">Respond to a Conversation</a></li>
+      </ul>
   </div>
 
+  <br>
 
-
+  <div class="row" >
+      <p>Use the following API information to integrate with User Registration and Block Lists</p>
+      <ul>
+        <li ng-repeat="resource in resources" class="large-12 columns"><a ng-href="#/docs/{{resource.name}}">/{{resource.name}}</a></li>
+      </ul>
+  </div>
 
 </div>
