@@ -42,18 +42,7 @@ Neosavvy.ApiDoc.Directives.directive('nsApiDoc', function ($http) {
                 scope.response = JSON.stringify(resp.data, undefined, 4);
 
                 return resp.data;
-            }).then(function (resp) {
-                return $http.post('/api/validate', {
-                    response: resp,
-                    schema: scope.endpoint.schema
-                });
-            }).then(function (resp) {
-                if (resp.data.errors.length > 0) {
-                    scope.errors = resp.data.errors;
-                    scope.status = 'fail';
-                }
-                elem.find('.status').addClass(scope.status);
-            });
+            })
         }
     }
 });
